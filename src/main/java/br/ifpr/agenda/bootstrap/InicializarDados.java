@@ -5,14 +5,15 @@ import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.ifpr.agenda.dominio.*;
+import br.ifpr.agenda.repositories.UsuarioRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import br.ifpr.agenda.dominio.Contato;
-import br.ifpr.agenda.dominio.Endereco;
-import br.ifpr.agenda.dominio.Telefone;
-import br.ifpr.agenda.dominio.TipoTelefone;
 import br.ifpr.agenda.repositories.ContatoRepository;
 
 @Component
@@ -20,6 +21,10 @@ public class InicializarDados implements CommandLineRunner {
 
     @Autowired
     private ContatoRepository contatoRepository;
+
+    @Autowired
+    private UsuarioRepo userRepo;
+
 
     @Override
     public void run(String... args) throws Exception {
@@ -44,6 +49,12 @@ public class InicializarDados implements CommandLineRunner {
         telefones.add(telefone1);
         contato1.setTelefones(telefones);
 
+        var a = userRepo.findByNome("amogus");
+        if (a.isEmpty()) {
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            var login = Usuario.builder().nome("amogus").senha(passwordEncoder.encode("amogus")).build();
+            userRepo.save(login);
+        }
         contatoRepository.save(contato1);
     }
 
