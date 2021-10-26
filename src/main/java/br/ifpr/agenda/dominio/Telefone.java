@@ -12,9 +12,14 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 
+import lombok.*;
 import org.springframework.util.StringUtils;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@EqualsAndHashCode(callSuper = false, of = {"id"})
 public class Telefone {
 	
 	@Id
@@ -29,66 +34,12 @@ public class Telefone {
 	
 	@ManyToOne
 	private Contato contato;
-	
-	public Telefone() {}
-	
-	public Telefone(String numero) {
-		this.numero = numero;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public TipoTelefone getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(TipoTelefone tipo) {
-		this.tipo = tipo;
-	}
-
-	public String getNumero() {
-		return numero;
-	}
-
-	public void setNumero(String numero) {
-		this.numero = numero;
-	}
-
-	public Contato getContato() {
-		return contato;
-	}
-
-	public void setContato(Contato contato) {
-		this.contato = contato;
-	}
 
 	@Override
 	public String toString() {
 		return "Telefone [numero=" + numero + "]";
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(id, numero, tipo);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Telefone other = (Telefone) obj;
-		return Objects.equals(id, other.id) && Objects.equals(numero, other.numero) && tipo == other.tipo;
-	}
 	
 	public boolean isVazio() {
 		return !StringUtils.hasText(this.numero);
