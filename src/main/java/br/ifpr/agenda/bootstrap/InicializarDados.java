@@ -1,20 +1,17 @@
 package br.ifpr.agenda.bootstrap;
 
+import br.ifpr.agenda.dominio.*;
+import br.ifpr.agenda.repositories.ContatoRepository;
+import br.ifpr.agenda.repositories.UsuarioRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Component;
+
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
-
-import br.ifpr.agenda.dominio.*;
-import br.ifpr.agenda.repositories.UsuarioRepo;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
-
-import br.ifpr.agenda.repositories.ContatoRepository;
 
 @Component
 public class InicializarDados implements CommandLineRunner {
