@@ -6,14 +6,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderColumn;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -39,6 +32,8 @@ public class Contato {
 	private String email;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate dataNascimento;
+	@ManyToOne
+	private Usuario usuario;
 
 	@OneToMany
 	(
