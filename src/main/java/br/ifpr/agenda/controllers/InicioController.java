@@ -6,9 +6,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class InicioController {
 
-
     @GetMapping("/login")
     public String getLoginPage(){
         return "inicial/login";
+    }
+
+
+    @GetMapping("/cadastro")
+    public String getCadastroPage(){
+        return "inicial/cadastro";
     }
 }

@@ -1,10 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Cadastro</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
+    <script type="text/javascript" src="http://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=5rB8xs4D7yGt_lbSQCSGK3vGw546D1PKY0kqko9XWXSn98qUp3zidzFiu2ItkqOL" charset="UTF-8"></script></head>
 </head>
 <body>
+
+
+<div class="container">
+    <form class="form-signin" method="post" action="">
+        <h2 class="form-signin-heading">Cadastrar Conta</h2>
+        <p>
+            <label for="username" class="sr-only">Nome de usuário</label>
+            <input type="text" id="username" name="username" class="form-control" placeholder="Digite seu nome de usuário" required autofocus>
+        </p>
+        <p>
+            <label for="password" class="sr-only">Senha</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Digite sua senha" required>
+        </p>
+        <p>
+            <label for="password" class="sr-only">Repita a senha</label>
+            <input type="password" id="password2" name="password2" class="form-control" placeholder="Repita a senha" required>
+        </p>
+        <input name="_csrf" type="hidden" value="df1cf720-69ed-4c27-ac1d-2b395b612b96" />
+        <button class="btn btn-lg btn-dark btn-block" type="submit">Cadastrar-se</button>
+    </form>
+</div>
 
 </body>
 </html>
