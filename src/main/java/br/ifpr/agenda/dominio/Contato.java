@@ -24,6 +24,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @EqualsAndHashCode(callSuper = false, of = {"id"})

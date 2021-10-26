@@ -10,6 +10,7 @@ import javax.persistence.Id;
 
 @Data
 @Entity
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @EqualsAndHashCode(callSuper = false, of = {"id"})

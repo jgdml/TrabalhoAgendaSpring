@@ -22,7 +22,7 @@ public class InicializarDados implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		Contato contato1 = new Contato("João");
+		Contato contato1 = Contato.builder().nome("João").build();
 		contato1.setSobrenome("Silva");
 		contato1.setEmail("joao.silva@gmail.com");
 		contato1.setDataNascimento(LocalDate.of(1980, Month.OCTOBER, 1));

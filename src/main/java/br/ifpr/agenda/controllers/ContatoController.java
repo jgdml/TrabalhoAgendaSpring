@@ -35,7 +35,7 @@ public class ContatoController {
 	
 	@GetMapping("/contatos/novo")
 	public String novoContato(Model model) {
-		model.addAttribute("contato", new Contato(""));
+		model.addAttribute("contato", Contato.builder().nome("").build());
 		model.addAttribute("fieldToFocus", "nome");
 		return "contatos/editar";
 	}

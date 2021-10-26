@@ -17,6 +17,7 @@ import org.springframework.util.StringUtils;
 
 @Entity
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @EqualsAndHashCode(callSuper = false, of = {"id"})

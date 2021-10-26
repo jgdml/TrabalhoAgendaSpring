@@ -1,18 +1,13 @@
 package br.ifpr.agenda.dominio;
 
-import java.util.Objects;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-
 import lombok.*;
 import org.springframework.util.StringUtils;
 
+import javax.persistence.*;
+
 @Entity
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @EqualsAndHashCode(callSuper = false, of = {"id"})
