@@ -24,7 +24,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Contato {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotBlank(message = "Nome obrigatório")
 	private String nome;
