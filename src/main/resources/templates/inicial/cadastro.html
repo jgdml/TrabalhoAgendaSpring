@@ -11,26 +11,36 @@
 </head>
 <body>
 
+    <div class="container">
+        <form class="form-signin card" th:object="${usuarioDto}" method="post" action="/cadastro">
+            <h2 class="form-signin-heading">Cadastrar nova conta</h2>
+            <p>
+                <label for="nome" class="sr-only">Nome de usuário</label>
+                <input type="text" th:field="*{nome}" id="nome" name="nome" class="form-control" placeholder="Digite seu nome de usuário" required autofocus>
+            </p>
+            <p>
+                <label for="senha" class="sr-only">Senha</label>
+                <input type="password" th:field="*{senha}" id="senha" name="senha" class="form-control" placeholder="Digite sua senha" required>
+            </p>
+            <p>
+                <label for="senha2" th:field="*{senha2}" class="sr-only">Repita a senha</label>
+                <input type="password" id="senha2" name="senha2" class="form-control" placeholder="Repita a senha" required>
+            </p>
+            <a href="/login">Já possui conta?</a>
+            <button class="btn btn-lg btn-dark btn-block" type="submit">Cadastrar-se</button>
 
-<div class="container">
-    <form class="form-signin" method="post" action="">
-        <h2 class="form-signin-heading">Cadastrar Conta</h2>
-        <p>
-            <label for="username" class="sr-only">Nome de usuário</label>
-            <input type="text" id="username" name="username" class="form-control" placeholder="Digite seu nome de usuário" required autofocus>
-        </p>
-        <p>
-            <label for="password" class="sr-only">Senha</label>
-            <input type="password" id="password" name="password" class="form-control" placeholder="Digite sua senha" required>
-        </p>
-        <p>
-            <label for="password" class="sr-only">Repita a senha</label>
-            <input type="password" id="password2" name="password2" class="form-control" placeholder="Repita a senha" required>
-        </p>
-        <input name="_csrf" type="hidden" value="df1cf720-69ed-4c27-ac1d-2b395b612b96" />
-        <button class="btn btn-lg btn-dark btn-block" type="submit">Cadastrar-se</button>
-    </form>
-</div>
+            <div class="alert alert-danger" th:if="${err} != null">
+                <h5 th:text="${err}"></h5>
+            </div>
+
+            <div class="alert alert-success" th:if="${ok} != null">
+                <h5 th:text="${ok}"></h5>
+            </div>
+
+
+
+        </form>
+    </div>
 
 </body>
 </html>
