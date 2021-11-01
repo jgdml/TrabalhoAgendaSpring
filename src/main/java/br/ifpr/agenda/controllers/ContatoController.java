@@ -121,15 +121,18 @@ public class ContatoController {
     @RequestMapping("/contatos/paged")
     public String getContatosPaginados(Model model,
                                        @RequestParam(defaultValue = "0") int page,
-                                       @RequestParam(defaultValue = "10") int size,
-                                       FilterContato filterContato) {
+                                       @RequestParam(defaultValue = "10") int size) {
+
+
+        var filter = FilterContato.builder().usuario(getCurrentUser()).build();
 
         Pageable pageable = PageRequest.of(page, size);
-        contatoData.pageByFilter(pageable, filterContato);
 
-        model.addAttribute("contatos", contatoData.pageByFilter(pageable, filterContato));
+        var pagedContatos = contatoData.pageByFilter(pageable, filter);
 
-        return "contatos/paged";
+        model.addAttribute("pagedContatos", pagedContatos);
+
+        return "contatos/index";
 
     }
 }
