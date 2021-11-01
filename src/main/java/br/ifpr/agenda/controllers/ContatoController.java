@@ -130,7 +130,10 @@ public class ContatoController {
 
         var pagedContatos = contatoData.pageByFilter(pageable, filter);
 
-        model.addAttribute("pagedContatos", pagedContatos);
+        model.addAttribute("totalElements", pagedContatos.getTotalElements());
+        model.addAttribute("currentPage", pagedContatos.getPageable().getPageNumber());
+        model.addAttribute("totalPages", pagedContatos.getTotalPages());
+        model.addAttribute("contatos", pagedContatos.getContent());
 
         return "contatos/index";
 
