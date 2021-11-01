@@ -3,6 +3,9 @@ package br.ifpr.agenda.controllers;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import br.ifpr.agenda.dominio.Usuario;
+import br.ifpr.agenda.security.CustomUserDetails;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,15 +23,23 @@ import br.ifpr.agenda.repositories.ContatoRepository;
 public class ContatoController {
 
 	private ContatoRepository contatoRepository;
+
 	
 	public ContatoController(ContatoRepository contatoRepository) {
 		this.contatoRepository = contatoRepository;
+	}
+
+
+	private Usuario getCurrentUser(){
+		var userDetails = (CustomUserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		return userDetails.getUsuario();
 	}
 	
 	@RequestMapping("/contatos")
 	public String getContatos(Model model) {
 		
-		model.addAttribute("contatos", contatoRepository.findAll());
+		model.addAttribute("contatos", contatoRepository.findAllByUsuario(getCurrentUser()));
 		
 		return "contatos/index";
 	}
@@ -65,9 +76,11 @@ public class ContatoController {
 		if (bindingResult.hasErrors()) {
 			return "contatos/editar";
 		}
+
+		contato.setUsuario(getCurrentUser());
 		
 		contato.corrigirEnderecosTelefones();
-		
+
 		contatoRepository.save(contato);
 		
 		return "redirect:/contatos";
