@@ -49,6 +49,10 @@ public class ContatoData extends JpaCrudRepositoryImpl<Contato, FilterContato> {
             where.and(entidade.nome.like("%" + filter.getName() + "%"));
         }
 
+        if (filter.getUsuario() != null && filter.getUsuario().getId() != null) {
+            where.and(usuario.id.eq(filter.getUsuario().getId()));
+        }
+
 //        if (filter.getActive() != null) {
 //            where.and(entidade.active.eq(filter.getActive()));
 //        }
