@@ -3,6 +3,7 @@ package br.ifpr.agenda.repositories;
 import br.ifpr.agenda.dominio.Contato;
 import br.ifpr.agenda.dominio.FilterContato;
 import br.ifpr.agenda.dominio.QContato;
+import br.ifpr.agenda.dominio.QUsuario;
 import br.ifpr.agenda.repositories.framework.JpaCrudRepositoryImpl;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -30,8 +31,9 @@ public class ContatoData extends JpaCrudRepositoryImpl<Contato, FilterContato> {
         JPAQuery jpaQuery = new JPAQuery(entityManager);
 
         QContato entidade = QContato.contato;
-        JPAQueryBase jpaQueryBase = jpaQuery.from(entidade);
-        jpaQueryBase.limit(pageable.getPageSize()).offset(pageable.getOffset());
+        QUsuario usuario = QUsuario.usuario;
+//        JPAQueryBase jpaQueryBase = jpaQuery.from(entidade);
+//        jpaQueryBase.limit(pageable.getPageSize()).offset(pageable.getOffset());
         PathBuilder<Contato> pathBuilder = new PathBuilder<>(Contato.class, "contato");
         BooleanBuilder where = new BooleanBuilder();
 
@@ -51,7 +53,9 @@ public class ContatoData extends JpaCrudRepositoryImpl<Contato, FilterContato> {
 //            where.and(entidade.active.eq(filter.getActive()));
 //        }
 
-
+        JPAQueryBase jpaQueryBase = jpaQuery.from(entidade);
+        jpaQueryBase.limit(pageable.getPageSize()).offset(pageable.getOffset());
+        jpaQueryBase.innerJoin(entidade.usuario, usuario);
         jpaQueryBase.where(where);
         for (Sort.Order order : pageable.getSort()) {
             if (order.getDirection().equals(Sort.Direction.ASC)) {
