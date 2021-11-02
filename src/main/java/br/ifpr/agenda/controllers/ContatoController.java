@@ -121,7 +121,7 @@ public class ContatoController {
     @RequestMapping("/contatos/paged")
     public String getContatosPaginados(Model model,
                                        @RequestParam(defaultValue = "0") int page,
-                                       @RequestParam(defaultValue = "10") int size) {
+                                       @RequestParam(defaultValue = "5") int size) {
 
 
         var filter = FilterContato.builder().usuario(getCurrentUser()).build();

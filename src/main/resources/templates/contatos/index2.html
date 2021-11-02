@@ -13,9 +13,6 @@
 	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
 	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
 	crossorigin="anonymous">
-
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	  rel="stylesheet">
 </head>
 <body>
 	<nav class="navbar navbar-dark bg-dark">
@@ -77,104 +74,12 @@
 									</div></td>
 							</tr>
 						</table>
-						<div class="pagesContainer">
-
-							<div class="pageControl">
-								<form th:action="@{/contatos/paged?page=0}" method="post">
-									<button class="nextButton" type="submit">
-										<i class="material-icons">first_page</i>
-									</button>
-								</form>
-
-								<form class="nextButton" th:action="@{/contatos/paged(page=(${currentPage} > 0 ? ${currentPage}-1 : ${currentPage}))}" method="post">
-									<button class="nextButton" type="submit">
-										<i class="material-icons">chevron_left</i>
-									</button>
-								</form>
-
-								<text class="currentPage" th:text="${currentPage+1}"></text>
-
-								<form th:action="@{/contatos/paged(page=(${currentPage} < ${totalPages}-1 ? ${currentPage}+1 : ${currentPage}))}" method="post">
-									<button class="nextButton" type="submit">
-										<i class="material-icons">chevron_right</i>
-									</button>
-								</form>
-
-								<form th:action="@{/contatos/paged(page=(${totalPages}-1))}" method="post">
-									<button class="nextButton" type="submit">
-										<i class="material-icons">last_page</i>
-									</button>
-								</form>
-
-							</div>
-
-							<div>
-								<label th:text=" 'Total de ' + ${totalElements} + (${totalElements} > 1 ? ' contatos' : ' contato') + ' em ' + ${totalPages} + (${totalPages} > 1 ? ' páginas' : ' página') ">
-
-								</label>
-							</div>
-
-						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<style>
-		.pagesContainer{
-			display: flex;
-			flex-direction: column;
-
-			align-items: center;
-			justify-content: center;
-		}
-
-		.pageControl{
-			display: flex;
-			flex-direction: row;
-
-			align-items: center;
-			justify-items: center;
-		}
-
-		.currentPage{
-			border-color: black;
-			border-radius: 18%;
-			border-width: 1px;
-
-			background-color: transparent;
-
-			font-weight: bolder;
-
-			padding-left: 10px;
-			padding-right: 10px;
-
-		}
-
-		.nextButton{
-			display: flex;
-
-			background-color: transparent;
-			border-color: transparent;
-			color: gray;
-
-			cursor: pointer;
-
-			font-size: 22px;
-			font-weight: bold;
-
-			align-items: center;
-			justify-content: center;
-
-			transition: 200ms;
-		}
-
-		.nextButton:hover{
-			color: black;
-		}
-
-	</style>
+	
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

@@ -40,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .and()
                 .formLogin()
-                .defaultSuccessUrl("/contatos", true)
+                .defaultSuccessUrl("/contatos/paged", true)
                 .loginPage("/login")
                 .permitAll();
     }
