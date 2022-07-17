@@ -1,2 +1,9 @@
-# agenda
-Exemplo básico de agenda utilizando Spring Boot + Thymeleaf
+# TrabalhoAgendaSpring
+
+Website de agenda básico.
+
+Feito como trabalho para a matéria de Projeto Integrador II.
+
+# Tecnologias
+ - Spring Boot
+ - Thymeleaf
